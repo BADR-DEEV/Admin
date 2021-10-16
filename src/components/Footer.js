@@ -2,12 +2,13 @@ import React from "react"
 import {Container , Row , Col} from "react-bootstrap"
 
 const Footer = ()=> {
+    const year = new Date().getFullYear();
     return (
         <footer>
         <Container>
        <Row>
         <Col className = "text-center py-3">
-            copyRight &copy; Admin
+           <strong style = {{fontWeight : "900"}}>Devsly</strong> <span style = {{fontWeight : "100"}}>CopyRight&copy; {year}</span>
         </Col>
     
 
