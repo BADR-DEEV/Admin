@@ -10,8 +10,13 @@ import AddUsers  from './screens/AddUsers'
 import LoginScreen from './screens/LoginScreen'
 import PrivateRoute from './components/privetRoute'
 import RegisterScreen from './screens/RegisterScreen'
+import HomeScreen from "./screens/HomeScreen"
+import RealestateScreen from './screens/RealestateScreen'
+import RealestateDetailScreen from "./screens/RealestateDetailScreen"
+
 
  const App = () => {
+ 
   return (
     <Router>
     {/* Admins stuff */}
@@ -22,10 +27,14 @@ import RegisterScreen from './screens/RegisterScreen'
    <Route path = "/login"  component = {LoginScreen} />
    <Route path = "/register"  component = {RegisterScreen} />
    </>
+   <PrivateRoute path = "/" component = {HomeScreen} exact/> 
    <PrivateRoute path = "/view/users"  component = {ViewUsers}/>
    <PrivateRoute path = "/edit/users/:id" component = {EditUsers} exact/> 
    <PrivateRoute path = "/add/users" component = {AddUsers} exact/> 
-   <PrivateRoute path = "/" component = {ViewUsers} exact/> 
+   <PrivateRoute path = "/RealestateScreen" component = {RealestateScreen} exact/> 
+   <PrivateRoute path = "/realestates/:id" component = {RealestateDetailScreen} exact/> 
+   {/* <PrivateRoute path = "/" component = {ViewUsers} exact/>  */}
+  
 
    </Container>
 
@@ -43,13 +52,11 @@ import RegisterScreen from './screens/RegisterScreen'
 export default App
 
 
+// <(bugs + missing fetures)>
 
-//react pagination 
 //cleaning the code
-//redirecting if xadmin of not 
+//redirecting if xadmin or not 
 //maybe add filtering and dark mode and translation
-//register doesnot work for some reasone i will ask taha
-//the phone doesnt get edited or added for some reasone
 //adding a popup message after clicking delete 
-//adding homescreen and welcoming the user with its name easy
-
+//it keeps the old value of the phone for some resone
+//making the error messages fade out after certin amount of time

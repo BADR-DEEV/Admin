@@ -18,9 +18,6 @@ import Pagination from "../components/Pagination"
 
 
 
-
-    const [posts , setPosts] = useState([])
-    const [loadingf, setLoading] = useState(false)
     const [currentPage , setCurrentPage] = useState(1)
     const [postsPerPage] = useState(5)
 
@@ -40,8 +37,6 @@ import Pagination from "../components/Pagination"
 
  
 const deleteHandler = (b) => {
-    console.log(users)
-    
     dispatch(deleteUser(b))
     setInterval(function() {
         window.location.reload();
@@ -75,7 +70,7 @@ const paginate = pageNumber => {
                           
             
          {users ? (<><Table  striped bordered hover responsive className = "table-sm">
-        <thead style = {{"backgroundColor" : "#f9f9f9"}}>
+        <thead >
        <tr>
             <th>ID</th>
             <th>NAME</th>
@@ -89,7 +84,7 @@ const paginate = pageNumber => {
 
         </thead>
 
-        <tbody style = {{"backgroundColor" : "#f9f9f9"}}>
+        <tbody >
 
 
             {currentPost.map(user => (
@@ -99,16 +94,32 @@ const paginate = pageNumber => {
                 <td><a href= {`mailto:${user.email}`}>{user.email}</a></td>
                 <td>
                 
-                    <LinkContainer to = {`/edit/users/${user.id}`}>
+                {user.role.id === 3 ? (<LinkContainer style = {{border : "1px solid black"}} to = "#" >
+                        <Button   variant = "dark" className = "btn-sm" disabled>
+                        <i  className = "fas fa-edit"></i>
+                        </Button>
+
+                        
+                    </LinkContainer>) : <LinkContainer to = {`/edit/users/${user.id}`} >
                         <Button variant = "light" className = "btn-sm">
                         <i className = "fas fa-edit"></i>
                         </Button>
-                    </LinkContainer>
+                    </LinkContainer>}
                     
-                    
-                    {user.role.id === 3 ?   <Button variant = "dark" className = "btn-sm" disabled>
+{/* <button 
+
+ onClick={() => {
+    const confirmBox = window.confirm(
+      "Do you really want to delete this Crumb?"
+    )
+    if (confirmBox === true) {
+      handleDeleteCrumb(bookmark)
+    }
+  }}>
+</button> */}
+                    {user.role.id === 3 ?   <Button style = {{border : "1px solid black" , paddingRight : "18px"}} variant = "dark" className = "btn-sm" disabled>
                     <i className = "fas fa-trash"></i>
-                          </Button> :  <Button variant = "danger" className = "btn-sm" onClick = {()=> deleteHandler(user.id)}>
+                          </Button> :  <Button variant = "danger" style = {{paddingRight : "18px"}} className = "btn-sm" onClick = {()=> deleteHandler(user.id)}>
                     <i className = "fas fa-trash"></i>
                           </Button>}
                    
@@ -129,10 +140,6 @@ const paginate = pageNumber => {
                 </td>
 
 
-                
-
-                
-
 
                 </tr>
                 
@@ -144,7 +151,7 @@ const paginate = pageNumber => {
 
         </Table> <Pagination postsPerPage = {postsPerPage} 
             totalPosts = {users.length} 
-            paginate =  {paginate}/> </>) :  (users === null) ? (<h1 style = {{paddingTop : "40px"}}>No users Found</h1>) : <h1>d</h1>}
+            paginate =  {paginate}/> </>) :  <h1>No users Found</h1>}
         </>
         
         )}

@@ -9,17 +9,16 @@ import Select from 'react-select'
 import {Link} from "react-router-dom"
  const EditUsers = ({match}) => {
 
-    const curId =  match.params.id
+    const curId =  Number(match.params.id)
     // const [email , setEmail] = useState("")
     // const [name , setName] = useState("")
     // const [password , setPassword] = useState("")
     const [confirmPassword , setConfirmPassword] = useState("")
     const [message , setMessage] = useState(null)
-    const [exist , setExist] = useState()
+    // const [exist , setExist] = useState()
     // const [roleVal,setRoleVal] = useState("");
 
-   const [test , setTest] = useState("")
-   const [test1 , setTest1] = useState("")
+ 
     // const [phoneNumber , setPhoneNumber] = useState("")
 
   
@@ -33,7 +32,6 @@ import {Link} from "react-router-dom"
 
     const userUpdateProfile = useSelector(state => state.userUpdateProfile)
     const {success , error , loading} =  userUpdateProfile
-
 // console.log(users)
     //  const userLogin = useSelector(state => state.userLogin)
     //  const {userInfo} =  userLogin
@@ -59,16 +57,15 @@ import {Link} from "react-router-dom"
 //    } , [user,history,dispatch ,userInfo])
 
  const [auth, setAuth] = useState({
-        
-    username:test,
-    email : test1,
-    password:"" ,
-    role :"",
+    username:"" ,
+    email : "",
+    password: "",
+    role : "",
     phone : ""
 
  })
 
- const {username, email, password , role , phone} = auth;
+ const { username, email, password , role , phone} = auth;
 
 
 
@@ -89,7 +86,7 @@ const onChange = e =>{
           
            console.log(auth)
            }else{ //here we will dispatch put request 
-               dispatch(updateUserProfile({id : user.id , username , email , password ,role})) 
+               dispatch(updateUserProfile({id : user.id , username , email , password ,role , phone})) 
                console.log("sent") 
                
        }
@@ -114,14 +111,22 @@ const onChange = e =>{
     
 
     useEffect(() => {
-        setTest("")
-        setTest1("")
         dispatch(getUserDetails(curId))
-      setTest1(user.email)
-      setTest(user.username)
 
- }, [dispatch , test , test1 ,user.username , user.email ])
-  
+        setAuth({username:user.username ,
+             email:user.email , 
+             phone : user.phone
+            
+            })
+           
+            
+
+ }, [dispatch ,
+     curId ,user.username, 
+     user.email , 
+     user.phone
+     ])
+ 
  
 
  
@@ -133,7 +138,7 @@ const onChange = e =>{
 
         <Col>
            {message && <Message variant = "danger"> {message} </Message>}
-           {error && <Message variant = "danger"> {error} </Message>}
+           {error && <Message variant = "danger" > {error} </Message>}
            {success && <Message style = {{width : "100%"}} variant = "success"> Profile updated </Message>}
             {loading && <Loader></Loader>} 
             </Col>
@@ -215,21 +220,26 @@ const onChange = e =>{
             <Col>
           
                 {/* phone Number */}
-               <Form.Group >
-                   <Form.Label controlId = "phone">
-                      <h5> Number </h5>
+         
+          
+                {/* phone Number */}
+               <Form.Group controlId = "phone" >
+                   <Form.Label >
+                      <h5>Number</h5>
                    </Form.Label>
-                   <Form.Control name = "phone" style ={{border : "5px solid lightgray"}} 
-                   type = "text" placeholder = "Enter Phone Number" 
-                   value = {phone}
-                   onChange = {onChange}>
-   
+                   <Form.Control name= "phone" style ={{border : "5px solid lightgray"}} type="number" placeholder = "Enter Phone Number"
+                   value= {phone}
+                   onChange = {onChange} 
+                  >
                    </Form.Control>
                </Form.Group>
+          
+
+               
                
 
            <div style = {{marginTop : "70px" }}>
-        <Link to = "/" >
+        <Link to = "/view/users" >
          GO Back
         </Link>
         </div>

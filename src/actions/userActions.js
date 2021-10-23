@@ -1,4 +1,4 @@
-import {USER_LIST_REQUEST,
+ import {USER_LIST_REQUEST,USER_UPDATE_PROFILE_FAILimport,
     USER_LIST_SUCCESS,
      USER_LIST_FAIL,
      USER_DETAIL_REQUEST,
@@ -107,6 +107,7 @@ export const getUserDetails = (id) => async (dispatch) => {
 
 
 export const login = (form) => async (dispatch) => {
+    console.log(form)
     // const formData = Form
     //console.log(email)
     //console.log(password)
@@ -205,7 +206,6 @@ export const register = (form) =>async (dispatch) => {
 
 export const updateUserProfile = (user) =>async (dispatch , getState) => {
     const userData = qs.stringify(user)
-   console.log(userData)
 
     try{
         dispatch({
@@ -230,7 +230,7 @@ export const updateUserProfile = (user) =>async (dispatch , getState) => {
             type: USER_UPDATE_PROFILE_FAIL,
          payload : error.response.statusText
         })
-        console.log(error.response.statusText)
+        // console.log(error.response.statusText)
        
     }
 }

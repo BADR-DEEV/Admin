@@ -8,6 +8,8 @@ import { userListReducer, userDetailReducer
     userRegisterReducer
  } from "./reducers/userReducers"
 
+ import {realestateListReducer, realestateDtailsReducer} from "./reducers/realestateReducer.js"
+
 
 const reducer = combineReducers({
     userList : userListReducer,
@@ -15,8 +17,9 @@ const reducer = combineReducers({
     userLogin : userLoginReducer,
     userUpdateProfile : userUpdateProfileReducer,
     addNewUser : addNewUserReducer,
-    userRegister : userRegisterReducer
-
+    userRegister : userRegisterReducer,
+    realestateList : realestateListReducer,
+    realestateDtails : realestateDtailsReducer
 
 })
 

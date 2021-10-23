@@ -30,10 +30,10 @@ import Select from 'react-select'
     // const [password , setPassword] = useState("")
     const [confirmPassword , setConfirmPassword] = useState("")
     const [message , setMessage] = useState(null)
-    const [exist , setExist] = useState(false)
-    const [drobDownValue,setDrobDownValue]=useState("User Role");
-    const [city , setCity] = useState("")
-    const [phoneNumber , setPhoneNumber] = useState("")
+    // const [exist , setExist] = useState(false)
+    // const [drobDownValue,setDrobDownValue]=useState("User Role");
+    // const [city , setCity] = useState("")
+    // const [phoneNumber , setPhoneNumber] = useState("")
 
   
     const  dispatch = useDispatch()
@@ -84,11 +84,11 @@ const onChange = e =>{
 
 }
 
-const handleSelect=(e)=>{
-    console.log(e);
-    setDrobDownValue(e)
+// const handleSelect=(e)=>{
+//     console.log(e);
+//     setDrobDownValue(e)
    
-  }
+//   }
   const options = [
     { value: 1, label: 'Authenticated' },
     { value: 2, label: 'Public' },
@@ -175,9 +175,9 @@ const handleSelect=(e)=>{
            
    
             </Col>
-            <Col>
-        
 
+
+            <Col>
                 {/* phone Number */}
                <Form.Group controlId = "phone" >
                    <Form.Label >
@@ -187,11 +187,15 @@ const handleSelect=(e)=>{
                    value= {phone}
                    onChange = {onChange} 
                   >
-   
                    </Form.Control>
                </Form.Group>
-               
+               <div style = {{marginTop : "70px" }}>
+        <Link to = "/view/users" >
+         GO Back
+        </Link>
+        </div>
             </Col>
+            
 
 
             

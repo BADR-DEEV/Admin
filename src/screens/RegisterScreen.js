@@ -25,7 +25,7 @@ import FormContainer from '../components/FormContainer'
      const userRegister = useSelector(state => state.userRegister)
      const {loading , error , userInfo} = userRegister
 
-   const redirect = "/view/users"
+   const redirect = "/"
 
 
    useEffect(()=> {
@@ -64,7 +64,7 @@ import FormContainer from '../components/FormContainer'
             </Form.Group>
 
         {/* Email */}
-            <Form.Group >
+            <Form.Group style = {{marginTop : "10px"}}>
                 <Form.Label>
                     Email Adress
                 </Form.Label>
@@ -77,7 +77,7 @@ import FormContainer from '../components/FormContainer'
 
       
 {/* //password */}
-            <Form.Group >
+            <Form.Group style = {{marginTop : "10px"}}>
                 <Form.Label>
                 password
                 </Form.Label>

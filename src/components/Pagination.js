@@ -17,7 +17,7 @@ import "./sty.css"
         {pageNumbers.map(number => (
             <div className = "pagination-wrapper">
             <li key = {number}> 
-            <a onClick = {()=> paginate(number)}  className = "page-selection">
+            <a className = "active" onClick = {()=> paginate(number)} hreft = "!#" className = "page-selection">
                 { number }
             </a>
             </li>

@@ -8,11 +8,9 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-   
   }
   
    li {
-   
     width: 30px;
 cursor: pointer;
     display: inline-block;

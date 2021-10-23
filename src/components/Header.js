@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {Navbar , Nav , Container, NavDropdown} from "react-bootstrap";
 import {LinkContainer} from "react-router-bootstrap"
 import { logout } from '../actions/userActions';
@@ -19,7 +19,16 @@ const Header = () => {
     dispatch(logout())
   }
 
+useEffect(() => {
+  if(userInfo){
+    console.log(userInfo)
+  }else{
+    return null;
+  }
+ 
 
+  
+}, [])
   
     
     return (
@@ -27,7 +36,7 @@ const Header = () => {
         <Navbar  bg = "dark" variant = "dark" expand="lg" collapseOnSelect>
   <Container>
 
-  <LinkContainer to = "/view/users" > 
+  <LinkContainer to = "/" > 
     <Navbar.Brand>Devsly</Navbar.Brand>
     </LinkContainer>
 
@@ -35,14 +44,23 @@ const Header = () => {
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav  style= {{marginLeft:"auto"}}>
 
-      {/* <LinkContainer to = "/view/users">
-        <Nav.Link>
+<>
+      <LinkContainer style = {{marginRight : "10px"}} to = "/">
+        <Nav.Link >
            HOME
         </Nav.Link>
+        </LinkContainer>
+        </>
 
-        </LinkContainer> */}
+<>
+        <LinkContainer style = {{marginRight : "10px"}} to = "/RealestateScreen">
+        <Nav.Link >
+           SHOP
+        </Nav.Link>
+        </LinkContainer>
+        </>
        
-          <NavDropdown title = "users" id = "username">
+         <NavDropdown style = {{marginRight : "10px"}} title = "users" id = "username">
 
           <LinkContainer to = "/view/users">
           <NavDropdown.Item><i class="fa fa-street-view" aria-hidden="true"></i> View Users</NavDropdown.Item>
@@ -63,21 +81,13 @@ const Header = () => {
 
           </NavDropdown>
 
-        ) :   <LinkContainer to = "/login" >
+        ) :   <LinkContainer to = "/login">
         <Nav.Link>
         <i  className = "fas fa-user"> </i> Sign In
         </Nav.Link>
         
         </LinkContainer>}
 
-        
-         
-         
-
-
-     
-
-      
       </Nav>
     </Navbar.Collapse>
   </Container>

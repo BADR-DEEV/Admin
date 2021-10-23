@@ -24,8 +24,8 @@ import FormContainer from '../components/FormContainer'
 
      const userLogin = useSelector(state => state.userLogin)
      const {loading , error , userInfo} = userLogin
-
-   const redirect = "/view/users"
+ 
+   const redirect = "/"
 
 
    useEffect(()=> {
@@ -64,7 +64,7 @@ import FormContainer from '../components/FormContainer'
                 </Form.Control>
             </Form.Group>
 {/* //password */}
-            <Form.Group controlId = "password">
+            <Form.Group controlId = "password" style = {{marginTop : "15px"}}>
                 <Form.Label>
                 password
                 </Form.Label>
